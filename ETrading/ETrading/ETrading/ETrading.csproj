@@ -214,6 +214,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\HomePage1.jpg" />
     <Content Include="Models\ETrading.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ETrading.Context.cs</LastGenOutput>
@@ -278,7 +279,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
