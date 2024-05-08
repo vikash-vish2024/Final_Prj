@@ -167,15 +167,41 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ETrading.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ETrading.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ETrading.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ETrading.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ETrading.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Cancellation.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Details.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendor.cs">
+      <DependentUpon>ETrading.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -191,6 +217,12 @@
     <Content Include="Models\ETrading.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ETrading.Context.cs</LastGenOutput>
+      <DependentUpon>ETrading.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ETrading.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ETrading.edmx</DependentUpon>
+      <LastGenOutput>ETrading.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -217,9 +249,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ETrading.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\ETrading.edmx.diagram">
+    <Content Include="Models\ETrading.edmx.diagram">
       <DependentUpon>ETrading.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -240,9 +272,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Home\Customer.cshtml" />
+    <Content Include="Views\Home\Vendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
