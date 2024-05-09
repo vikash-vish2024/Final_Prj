@@ -8,7 +8,12 @@ drop database E_TradingDB
 Create table Hints 
 (Hint_Id  int Primary Key Identity ,
 Questions NVarchar (100))
-
+INSERT INTO Hints (Questions) VALUES 
+('What is your Favourite Sport?'),
+('In what city were you born?'),
+('What is the name of your first pet?'),
+('What is your favorite movie?'),
+('What street did you grow up on?');
 ----------------------This is the table for the Admin-----------------
 Create table [Admin] 
 (Admin_Id numeric(10) Primary key not null,
@@ -17,7 +22,6 @@ Admin_Name varchar(30) not null,
 [Password] varchar(20) unique not null,
 Hint_Id int foreign key references Hints(Hint_Id),
 [Hint_Answers] varchar (200) not null)
-
 ----------------------This is the table for the Customer ----------------
 Create Table Customer 
 ([Customer_Id] numeric(10) Primary key,
@@ -83,7 +87,9 @@ Color varchar(20),
 Price float,
 Available_Stock int,
 [Status] varchar(25))
-
+ALTER TABLE Products
+ADD ImageFileName varchar(100);
+alter table products add isdeleted varchar(20)
 ----------------------This is the Table for Bucket------------------
 create Table BucketList(
 Serial_Number int  identity,
