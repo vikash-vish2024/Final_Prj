@@ -14,24 +14,14 @@ namespace ETradingSystem.Controllers
 
             return View();
         }
-        public ActionResult Admin()
-        {
-            ViewBag.Messenge = "Admin page";
-            return View();
-        }
-        public ActionResult Customer()
-        {
-            ViewBag.Messenge = "Customer page";
-            return View();
-        }
-        public ActionResult Vendor()
-        {
-            ViewBag.Messenge = "Vendor page";
-            return View();
-        }
         public ActionResult Help()
         {
             ViewBag.Messenge = "Help page";
+            return View();
+        }
+        public ActionResult Welcome()
+        {
+            ViewBag.Messenge = "Welcome page";
             return View();
         }
     }

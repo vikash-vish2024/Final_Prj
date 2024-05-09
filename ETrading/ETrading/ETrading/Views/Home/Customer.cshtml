@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Customer";
+﻿
+@{
+    ViewBag.Title = "Vendor";
 }
 
 <!DOCTYPE html>
@@ -7,35 +8,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login Page</title>
     <style>
         body {
-            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .login-container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 40px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 320px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .login-heading {
-            text-align: center;
-            margin-bottom: 30px;
+            .login-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        .form-control {
-            border-radius: 20px;
-        }
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
 
-        .login-button {
-            border-radius: 20px;
+            .form-group input {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
 
         .forgot-password-link,
@@ -44,22 +73,31 @@
             text-align: center;
             margin-top: 10px;
         }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2 class="login-heading">Welcome Back!</h2>
-        <form method="post">
+        <h2>Welcome Customer!</h2>
+        <form method="post" action="@Url.Action("Login", "Customer")">
+            <hr />
             <div class="form-group">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block login-button">Login</button>
+            <button type="submit">Login</button>
             <a href="#" class="forgot-password-link">Forgot Password?</a>
-            <a href="#" class="need-help-link">Need Help?</a>
+            <a href="help" Text="some" class="need-help-link">Need Help?</a>
         </form>
     </div>
 </body>
 </html>
+
+

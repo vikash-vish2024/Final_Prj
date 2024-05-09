@@ -1,53 +1,51 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-//namespace ETradingSystem.Controllers.E_Trading.Vendor
-//{
-//    public class VendorValidationController : Controller
-//    {
-//        // GET: VendorValidation
-//        public ActionResult Index()
-//        {
-//            return View();
-//        }
-//        [HttpPost]
-//        public ActionResult login(Customer model)
-//        {
-//            using (var context = new EmpDbEntities())
-//            {
-//                bool isValid = context.User_Master.Any(x => x.UserID == model.UserID && x.UserPassword == model.UserPassword);
-//                if (isValid)
-//                {
-//                    FormsAuthentication.SetAuthCookie(model.UserName, false);
-//                    return RedirectToAction("Index", "Employees");
-//                }
-//                ModelState.AddModelError("", "Invalid user name and password");
-//                return View();
-//            }
-//        }
-//        public ActionResult Signup()
-//        {
-//            return View();
-//        }
-//        [HttpPost]
-//        public ActionResult Signup(User_Master model)
-//        {
-//            using (var context = new EmpDbEntities())
-//            {
-//                context.User_Master.Add(model);
-//                context.SaveChanges();
+namespace ETradingSystem.Controllers.E_Trading.Vendor
+{
+    public class VendorValidationController : Controller
+    {
+        //private readonly E_Trading_SystemEntities db; // Replace YourDbContext with your actual DbContext class
 
-//            }
-//            return RedirectToAction("Login");
-//        }
+        //public VendorController()
+        //{
+        //    db = new E_Trading_SystemEntities(); // Initialize your DbContext
+        //}
+        // GET: Admin
+        public ActionResult Login()
+        {
+            return View();
+        }
 
-//        public ActionResult Logout()
-//        {
-//            FormsAuthentication.SignOut();
-//            return RedirectToAction("Login");
-//        }
-//    }
-//}
+        //[HttpPost]
+        //public ActionResult Login(string email, string password)
+        //{
+        //    // Your login logic goes here
+        //    // Example:
+        //    if (IsValidVendor(email, password))
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    else
+        //    {
+        //        // If login fails, set an error message and return to the login page
+        //        ViewBag.InvalidLogin = "Invalid Admin Email or Password.";
+        //        return View();
+        //    }
+        //}
+
+        //private bool IsValidVendor(string email, string password)
+        //{
+        //    string Email = db.Vendor.Where(x => x.Vendor_Email == email).Select(x => x.Vendor_Email).FirstOrDefault();
+        //    string Password = db.Vendor.Where(x => x.Vendor_Email == email).Select(x => x.Password).FirstOrDefault();
+        //    if (email == Email && password == Password)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+    }
+}

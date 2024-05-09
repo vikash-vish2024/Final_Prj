@@ -215,18 +215,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Home\Customer.cshtml" />
-    <Content Include="Views\Home\Vendor.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\AdminValidation\Login.cshtml" />
+    <Content Include="Views\CustomerValidation\Login.cshtml" />
+    <Content Include="Views\VendorValidation\Login.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\AdminValidation\" />
-    <Folder Include="Views\CustomerValidation\" />
-    <Folder Include="Views\VendorValidation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

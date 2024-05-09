@@ -1,37 +1,153 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Online Shopping</title>
     <style>
-        .image-frame {
-            max-width: 100%; 
-            height: auto; 
-            border: 2px solid #ccc;
-            padding: 10px;
-            box-sizing: border-box; 
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
         }
 
-        .image-frame img {
-            max-width: 100%; 
-            height: auto;
-            display: block;
-            margin: 0 auto; 
+        header {
+            background-color: #232f3e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px; /* Added margin bottom */
         }
 
-   
-         .only screen and (max-width: 768px) {
-            .image-frame {
-                max-width: 90%;
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            nav ul li {
+                display: inline;
+                margin-right: 10px; /* Reduced margin */
             }
+
+        .banner {
+            height: 200px; /* Reduced height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        .featured-categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0; /* Reduced padding */
+            background-color: #f2f2f2;
+        }
+
+        .category {
+            text-align: center;
+            padding: 10px; /* Reduced padding */
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduced box-shadow */
+            cursor: pointer; /* Added cursor pointer */
+        }
+
+            .category img {
+                width: 80px; /* Reduced image size */
+                height: 80px; /* Reduced image size */
+                object-fit: cover;
+                border-radius: 50%;
+                margin-bottom: 10px; /* Reduced margin */
+            }
+
+        footer {
+            background-color: #232f3e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .search-bar input[type="text"] {
+                padding: 5px;
+            }
+
+            .search-bar button {
+                padding: 5px 10px;
+                background-color: #ddd;
+                border: none;
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
-    <div class="image-frame">
-        <img src="~/images/HomePage1.jpg" alt="FirstPage">
+    <header>
+        <h1>Welcome To E-Trading</h1>
+    </header>
+
+    <div class="banner">
+        <img src="https://www.techprevue.com/wp-content/uploads/2016/09/fashion-online-shopping-sites.jpg" alt="Banner 1" width="1000" height="200">
+        <img src="~/images/Fab.jpg" alt="Banner 3" width="1000" height="200">
+        <img src="~/images/Elec.jpg" alt="Banner 4" width="1000" height="200">
+        <img src="https://1.bp.blogspot.com/-nnc_wv2uFI8/XteHuVaJBMI/AAAAAAAAAZk/uYd8OyJrznkaNXbB-xI7rXS1B_dtcCmfQCLcBGAsYHQ/w1200-h630-p-k-no-nu/banner_54c9af89-36d2-41b7-8fd0-4065f1a916e2_1920x.jpg" alt="Banner 5" width="1000" height="200" style="display: none;">
     </div>
+
+    <section class="featured-categories">
+        <div class="category" onclick="location.href='electronics.cshtml';">
+            <img src="https://i1.wp.com/www.justwebworld.com/wp-content/uploads/2014/06/Electrical-Gadgets-Electronic-Products.jpg?fit=819%2C598&ssl=1" alt="Electronics">
+            <h3>Electronics</h3>
+        </div>
+        <div class="category" onclick="location.href='clothing.html';">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.gNAPEphxf74Zul2dmZ0GxQHaE7&pid=Api&P=0&h=180" alt="Clothing">
+            <h3>Clothing</h3>
+        </div>
+        <div class="category" onclick="location.href='shoes.html';">
+            <img src="https://i.pinimg.com/originals/8b/7b/49/8b7b499eeffe0d6c7688e5318d48e3ba.jpg" alt="Shoes">
+            <h3>Shoes</h3>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Select the banner
+        const banner = document.querySelector('.banner');
+
+        // Select the images in the banner
+        const images = banner.querySelectorAll('img');
+
+        // Set initial image index
+        let currentIndex = 0;
+
+        // Function to toggle image visibility
+        function toggleImage() {
+            // Hide the current image
+            images[currentIndex].style.display = 'none';
+            // Move to the next image
+            currentIndex = (currentIndex + 1) % images.length;
+            // Show the next image
+            images[currentIndex].style.display = 'block';
+        }
+
+        // Call the toggleImage function every 3 seconds
+        setInterval(toggleImage, 1000);
+    </script>
 </body>
 </html>

@@ -14,11 +14,7 @@ namespace ETrading.Controllers
 
             return View();
         }
-        public ActionResult Admin()
-        {
-            ViewBag.Messenge = "Admin page";
-            return View();
-        }
+
         public ActionResult Customer()
         {
             ViewBag.Messenge = "Customer page";
@@ -27,6 +23,11 @@ namespace ETrading.Controllers
         public ActionResult Vendor()
         {
             ViewBag.Messenge = "Vendor page";
+            return View();
+        }
+        public ActionResult Welcome()
+        {
+            ViewBag.Messenge = "Welcome page";
             return View();
         }
     }

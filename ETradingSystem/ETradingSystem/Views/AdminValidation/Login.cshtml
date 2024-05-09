@@ -1,6 +1,6 @@
-﻿
+﻿@*@model ETrading.Models.Admin*@
 @{
-    ViewBag.Title = "Vendor";
+    ViewBag.Title = "Admin";
 }
 
 <!DOCTYPE html>
@@ -34,18 +34,13 @@
         }
 
             .login-container h2 {
-                max-width: 400px;
-                margin: 0 auto;
-                padding: 40px;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-                margin-top: 50px
+                text-align: center;
+                margin-bottom: 20px;
             }
 
-            .form-group {
-                margin-bottom: 15px;
-            }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
             .form-group label {
                 display: block;
@@ -72,32 +67,45 @@
             font-size: 16px;
         }
 
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
         .forgot-password-link,
         .need-help-link {
             display: block;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Customer</h2>
-        <form method="post" action="@Url.Action("Login", "Customer")">
+        <h2>Welcome Admin!</h2>
+        <form method="post" action="@Url.Action("Login", "AdminValidation")">
+            <hr />
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                @Html.ValidationMessageFor(model => model.Admin_Email) <!-- Display validation message for email field -->
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
+                @Html.ValidationMessageFor(model => model.Password) <!-- Display validation message for password field -->
             </div>
             <button type="submit">Login</button>
-            <a href="#" class="help-link">Forgot Password?</a>
-            <a href="help" text="Need Help?" class="help-link">Contact</a>
+            <a href="#" class="forgot-password-link">Forgot Password?</a>
+            <a href="help" class="need-help-link">Need Help?</a>
+            <!-- Display generic validation message -->
+            @if (!string.IsNullOrEmpty(ViewBag.InvalidLogin))
+            {
+                <div class="field-validation-error">@ViewBag.InvalidLogin</div>
+            }
         </form>
     </div>
 </body>
