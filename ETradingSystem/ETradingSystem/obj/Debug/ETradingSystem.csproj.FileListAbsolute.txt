@@ -83,3 +83,7 @@ D:\Demo_Final_Project\ETradingSystem\ETradingSystem\obj\Debug\ETradingSystem.csp
 D:\Demo_Final_Project\ETradingSystem\ETradingSystem\obj\Debug\ETradingSystem.csproj.CopyComplete
 D:\Demo_Final_Project\ETradingSystem\ETradingSystem\obj\Debug\ETradingSystem.dll
 D:\Demo_Final_Project\ETradingSystem\ETradingSystem\obj\Debug\ETradingSystem.pdb
+D:\Demo_Final_Project\ETradingSystem\ETradingSystem\bin\EntityFramework.dll
+D:\Demo_Final_Project\ETradingSystem\ETradingSystem\bin\EntityFramework.SqlServer.dll
+D:\Demo_Final_Project\ETradingSystem\ETradingSystem\bin\EntityFramework.xml
+D:\Demo_Final_Project\ETradingSystem\ETradingSystem\bin\EntityFramework.SqlServer.xml
