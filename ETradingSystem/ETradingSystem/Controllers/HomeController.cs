@@ -24,5 +24,16 @@ namespace ETradingSystem.Controllers
             ViewBag.Messenge = "Welcome page";
             return View();
         }
+        public ActionResult Login()
+        {
+            ViewBag.Messenge = "Login page";
+            return View();
+        }
+        public ActionResult AboutUs()
+        {
+            ViewBag.Messenge = "AboutUS page";
+            return View();
+        }
+
     }
 }

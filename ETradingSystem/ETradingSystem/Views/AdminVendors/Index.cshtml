@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ETradingSystem.Models.Vendor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    /* Custom CSS styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+    }
+    h2 {
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .action-buttons {
+        margin-right: 5px;
+    }
+
+        .action-buttons button {
+            background-color: Highlight; /* Green */
+            border: groove;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+            .action-buttons button:hover {
+                background-color: #218838; /* Darker green */
+            }
+</style>
+
+
+<p>
+    <h2>Vendors Information</h2>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor_Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor_Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passowrd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hint_Answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hint.Questions)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor_Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passowrd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hint_Answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hint.Questions)
+            </td>
+            <td class="action-buttons">
+                <button onclick="location.href='@Url.Action("Details", new { id = item.Vendor_Id })'">Details</button>
+                <button onclick="location.href='@Url.Action("Delete", new { id = item.Vendor_Id })'">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
