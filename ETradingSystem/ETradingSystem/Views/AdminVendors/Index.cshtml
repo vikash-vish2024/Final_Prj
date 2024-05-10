@@ -4,130 +4,128 @@
     ViewBag.Title = "Index";
 }
 
-<style>
-    /* Custom CSS styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: Arial, sans-serif;
-    }
-    h2 {
-        color: #333;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    th {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .action-buttons {
-        margin-right: 5px;
-    }
-
-        .action-buttons button {
-            background-color: Highlight; /* Green */
-            border: groove;
-            color: white;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
         }
 
-            .action-buttons button:hover {
-                background-color: #218838; /* Darker green */
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td:last-child {
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .btn-create {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+            .btn-create:hover {
+                background-color: #218838;
             }
-</style>
 
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
 
-<p>
-    <h2>Vendors Information</h2>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendor_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendor_Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mobile_Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendor_Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Passowrd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hint_Answer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hint.Questions)
-        </th>
-        <th></th>
-    </tr>
+            .btn-delete:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vendor_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vendor_Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mobile_Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vendor_Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Passowrd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hint_Answer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hint.Questions)
-            </td>
-            <td class="action-buttons">
-                <button onclick="location.href='@Url.Action("Details", new { id = item.Vendor_Id })'">Details</button>
-                <button onclick="location.href='@Url.Action("Delete", new { id = item.Vendor_Id })'">Delete</button>
-            </td>
-        </tr>
-    }
+    <div class="container">
+        <h2>Vendors Information</h2>
 
-</table>
+        <!-- Create New button -->
+        <p>
+            <button onclick="location.href='@Url.Action("Create")'" class="btn btn-create">Create New</button>
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Vendor_Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Vendor_Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Mobile_Number)</th>
+                <th>@Html.DisplayNameFor(model => model.Address)</th>
+                <th>@Html.DisplayNameFor(model => model.Category)</th>
+                <th>@Html.DisplayNameFor(model => model.Vendor_Age)</th>
+                <th>@Html.DisplayNameFor(model => model.Passowrd)</th>
+                <th>@Html.DisplayNameFor(model => model.Hint_Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Hint_Answer)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Mobile_Number)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Age)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Passowrd)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hint_Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hint_Answer)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td class="action-buttons">
+                        <button onclick="location.href='@Url.Action("Details", new { id = item.Vendor_Id })'" class="btn btn-info">Details</button>
+                        <button onclick="confirmDelete('@item.Vendor_Id')" class="btn btn-delete">Delete</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <script>
+        function confirmDelete(vendorId) {
+            if (confirm('Are you sure you want to delete this vendor?')) {
+                window.location.href = '@Url.Action("Delete", new { id = "" })' + vendorId;
+            }
+        }
+    </script>
+</body>
+</html>

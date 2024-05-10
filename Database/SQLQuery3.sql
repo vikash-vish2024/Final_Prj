@@ -14,6 +14,7 @@ INSERT INTO Hints (Questions) VALUES
 ('What is the name of your first pet?'),
 ('What is your favorite movie?'),
 ('What street did you grow up on?');
+select * from Hints
 ----------------------This is the table for the Admin-----------------
 Create table [Admin] 
 (Admin_Id numeric(10) Primary key not null,
@@ -22,6 +23,9 @@ Admin_Name varchar(30) not null,
 [Password] varchar(20) unique not null,
 Hint_Id int foreign key references Hints(Hint_Id),
 [Hint_Answers] varchar (200) not null)
+select * from Admin
+INSERT INTO Admin (Admin_Id, Admin_Email, Admin_Name, [Password], Hint_Id, Hint_Answers)
+VALUES (1111, 'vikashv@infinite.com', 'Vikash', 'Vikash@123', 1, 'Volleyball');
 ----------------------This is the table for the Customer ----------------
 Create Table Customer 
 ([Customer_Id] numeric(10) Primary key,
@@ -35,7 +39,14 @@ Mobile_Number numeric(10),
 [Hint_Id] int foreign key references Hints(Hint_Id),
 [Hint_Answer] varchar(200) not null,
 [Status] varchar(20))
- 
+ INSERT INTO Customer (Customer_Id, Customer_Name, Customer_Email, Date_Of_Birth, Address, Balance, Mobile_Number, [Password], Hint_Id, Hint_Answer, [Status])
+VALUES 
+(1, 'John Doe', 'john@example.com', '1990-01-01', '123 Main St', 100.50, 1234567890, 'password123', 1, 'Hint answer 1', 'Active'),
+(2, 'Jane Smith', 'jane@example.com', '1985-05-15', '456 Oak Ave', 75.25, 9876543210, 'securepwd', 2, 'Hint answer 2', 'Active'),
+(3, 'Alice Johnson', 'alice@example.com', '1998-11-30', '789 Elm St', 0, 5554443333, 'p@ssw0rd', 3, 'Hint answer 3', 'Active'),
+(4, 'Bob Brown', 'bob@example.com', '1982-08-20', '321 Pine St', 50, 1112223333, '123456', 4, 'Hint answer 4', 'Inactive'),
+(5, 'Emily Davis', 'emily@example.com', '1995-03-10', '654 Cedar Ave', 25.75, 9998887777, 'qwerty', 5, 'Hint answer 5', 'Active');
+select * from Customer
 ----------------------This is the table for the User_Wallet ----------------
 Create Table Wallet (
 wallet_Id int primary key identity,
@@ -58,7 +69,13 @@ Vendor_Age int not null,
 [Hint_Id] int foreign key references Hints(Hint_Id),
 [Hint_Answer] nvarchar(50),
 [Status] varchar(20))
- 
+ INSERT INTO Vendors (Vendor_Id, Vendor_Name, Vendor_Email, Mobile_Number, [Address], Category, Vendor_Age, [Passowrd], Hint_Id, Hint_Answer, [Status])
+VALUES 
+(1, 'Vendor1', 'vendor1@example.com', 1234567890, '123 Main St', 'Electronics', 35, 'password123', 1, 'Hint answer 1', 'Active'),
+(2, 'Vendor2', 'vendor2@example.com', 9876543210, '456 Oak Ave', 'Clothing', 28, 'securepwd', 2, 'Hint answer 2', 'Active'),
+(3, 'Vendor3', 'vendor3@example.com', 5554443333, '789 Elm St', 'Furniture', 42, 'p@ssw0rd', 3, 'Hint answer 3', 'Inactive'),
+(4, 'Vendor4', 'vendor4@example.com', 1112223333, '321 Pine St', 'Grocery', 30, '123456', 4, 'Hint answer 4', 'Active'),
+(5, 'Vendor5', 'vendor5@example.com', 9998887777, '654 Cedar Ave', 'Health & Beauty', 37, 'qwerty', 5, 'Hint answer 5', 'Active');
 ----------------------This is the table for the Orders ----------------
 Create Table Orders
 (Purchase_Id numeric(5) Primary key,
