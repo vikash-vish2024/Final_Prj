@@ -30,6 +30,7 @@ namespace ETradingSystem.Controllers.E_Trading.CustomerFun
         {
             if (ModelState.IsValid)
             {
+                customer.Status = "Active";
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -300,10 +300,6 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\AdminVendors\Delete.cshtml" />
-    <Content Include="Views\AdminVendors\Details.cshtml" />
-    <Content Include="Views\AdminVendors\Index.cshtml" />
-    <Content Include="Views\AdminCustomers\Delete.cshtml" />
     <Content Include="Views\AdminCustomers\Details.cshtml" />
     <Content Include="Views\AdminCustomers\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
@@ -316,6 +312,10 @@
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <Content Include="Views\Shared\_VendorLayout.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\AdminVendors\Delete.cshtml" />
+    <Content Include="Views\AdminVendors\Details.cshtml" />
+    <Content Include="Views\AdminVendors\Index.cshtml" />
+    <Content Include="Views\AdminCustomers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

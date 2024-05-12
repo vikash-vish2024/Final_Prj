@@ -25,7 +25,7 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
         {
             if (IsValidAdmin(email, password))
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

@@ -12,17 +12,19 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
 {
     public class AdminVendorsController : Controller
     {
-        private readonly E_TradingDBEntities db;
-        public AdminVendorsController()
-        {
-            db = new E_TradingDBEntities();
-        }
+        private E_TradingDBEntities db = new E_TradingDBEntities();
+
         public ActionResult Index()
         {
             var vendors = db.Vendors.Include(v => v.Hint);
             return View(vendors.ToList());
         }
+        public ActionResult GetVendorsByVendorName(string vendorName)
+        {
+            var vendors = db.Vendors.Where(v => v.Vendor_Name == vendorName).ToList();
 
+            return View("Index", vendors);
+        }
         public ActionResult Details(decimal id)
         {
             if (id == null)
@@ -56,8 +58,19 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
         public ActionResult DeleteConfirmed(decimal id)
         {
             Vendor vendor = db.Vendors.Find(id);
-            db.Vendors.Remove(vendor);
-            db.SaveChanges();
+            if (vendor != null)
+            {
+                if (vendor.Status == "Active")
+                {
+                    vendor.Status = "InActive";
+                    db.SaveChanges();
+                }
+                else
+                {
+                    vendor.Status = "Active";
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

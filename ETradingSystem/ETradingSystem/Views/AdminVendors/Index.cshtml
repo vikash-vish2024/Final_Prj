@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<ETradingSystem.Models.Vendor>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -21,17 +20,21 @@
 
         h2 {
             margin-bottom: 20px;
+            text-align: center; /* Center the heading */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #ddd;
+            margin-bottom: 20px; /* Add some space below the table */
         }
 
         th, td {
-            padding: 8px;
+            padding: 10px; /* Increase padding for better spacing */
+            color: #333; /* Darken the text color */
             border: 1px solid #ddd;
+            text-align: center; /* Center align content */
         }
 
         th {
@@ -40,76 +43,91 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        td:last-child {
-            text-align: center;
+            background-color: #f8f9fa; /* Use a lighter shade for even rows */
         }
 
         .action-buttons {
-            display: inline-block;
-            margin-right: 5px;
+            display: flex; /* Use flexbox for button alignment */
+            justify-content: center; /* Center align buttons horizontally */
+            align-items: center; /* Center align buttons vertically */
         }
+
+            .action-buttons a {
+                margin-right: 5px; /* Add some space between buttons */
+            }
     </style>
 </head>
 <body>
+    <br /><br />
+    <h2>Vendor Information</h2>
 
-    <div class="container">
-        <br /><br />
-        <h2><center>Vendors Information</center></h2>
-
-        <!-- Create New button -->
-        <p>
-            <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
-        </p>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Vendor Name</th>
-                    <th>Vendor Email</th>
-                    <th>Mobile Number</th>
-                    <th>Address</th>
-                    <th>Category</th>
-                    <th>Vendor Age</th>
-                    <th>Password</th>
-                    <th>Hint ID</th>
-                    <th>Hint Answer</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Vendor_Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Vendor_Email)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Mobile_Number)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Category)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Vendor_Age)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Passowrd)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Hint_Id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Hint_Answer)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                        <td class="action-buttons">
-                            <a href="@Url.Action("Details", new { id = item.Vendor_Id })" class="btn btn-info">Details</a>
-                            <button onclick="confirmDelete('@item.Vendor_Id')" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <!-- Form to search for vendors by name -->
+    <div class="form-group">
+        <label for="vendorName">Enter Vendor Name:</label>
+        <input type="text" name="vendorName" id="vendorName" class="form-control" required>
     </div>
 
-    <script>
-        function confirmDelete(vendorId) {
-            if (confirm('Are you sure you want to delete this vendor?')) {
-                window.location.href = '@Url.Action("Delete", new { id = "" })' + vendorId;
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vendor Name</th>
+                <th>Vendor Email</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Category</th>
+                <th>Vendor Age</th>
+                <th>Password</th>
+                <th>Hint Answer</th>
+                <th>Status</th>
+                <th>Hint Questions</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Mobile_Number)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Vendor_Age)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Passowrd)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hint_Answer)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hint.Questions)</td>
+                    <td class="action-buttons">
+                        @Html.ActionLink("Details", "Details", new { id = item.Vendor_Id }, new { @class = "btn btn-primary btn-sm" })
+                        @if (item.Status == "Active")
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Vendor_Id }, new { @class = "btn btn-danger btn-sm" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Activate", "Delete", new { id = item.Vendor_Id }, new { @class = "btn btn-success btn-sm" })
+                        }
+                    </td>
+                </tr>
             }
-        }
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#vendorName").on("input", function () {
+                var input = $(this).val().toLowerCase();
+                $("table tbody tr").each(function () {
+                    var name = $(this).find("td:first").text().toLowerCase();
+                    if (name.includes(input)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

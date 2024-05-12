@@ -23,6 +23,12 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
             var customers = db.Customers.Include(c => c.Hint);
             return View(customers.ToList());
         }
+        public ActionResult GetCustomerByCustomerName(string customerName)
+        {
+            var vendors = db.Customers.Where(v => v.Customer_Name == customerName).ToList();
+
+            return View("Index", vendors);
+        }
         public ActionResult Details(decimal id)
         {
             if (id == null)
@@ -37,7 +43,7 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
             return View(customer);
         }
 
-        public ActionResult Delete(decimal? id)
+        public ActionResult Delete(decimal id)
         {
             if (id == null)
             {
@@ -58,9 +64,9 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
             Customer customer = db.Customers.Find(id);
             if (customer != null)
             {
-                if (customer.Status != "deleted") 
+                if (customer.Status == "Active")
                 {
-                    customer.Status = "deleted"; 
+                    customer.Status = "InActive";
                     db.SaveChanges();
                 }
                 else
@@ -69,7 +75,7 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {
