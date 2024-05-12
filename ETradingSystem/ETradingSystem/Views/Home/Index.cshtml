@@ -1,159 +1,182 @@
-﻿﻿
+﻿@{ ViewBag.Title = "Home";}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shopping</title>
+    <title>Ekart - Online Shopping Site</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css">
     <style>
-        /* Basic styles */
-        body {
-            font-family: Arial, sans-serif;
+        .ProductType {
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background-color: #232f3e;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 20px; /* Added margin bottom */
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-            nav ul li {
-                display: inline;
-                margin-right: 10px; /* Reduced margin */
+            .ProductType ul {
+                list-style: none;
+                margin-top: 70px;
+                padding: 0;
             }
 
-        .banner {
-            background-size: cover;
-            background-position: center;
-            height: 200px; /* Reduced height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+                .ProductType ul li {
+                    display: inline;
+                }
+
+                    .ProductType ul li a {
+                        display: inline-block;
+                        padding: 20px 20px;
+                        text-decoration: none;
+                        font-weight: bold;
+                        color: black;
+                        transition: color 0.3s ease;
+                    }
+
+                        .ProductType ul li a:hover {
+                            color: skyblue;
+                        }
+
+        /* Adjusted Logo Style */
+        .logo img {
+            width: 100px;
+            height: auto;
+            margin-top: 70px ; /* Adjusted to use the logo's margin */
         }
 
-        .featured-categories {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 0; /* Reduced padding */
-            background-color: #f2f2f2;
+
+
+
+        .banner img{
+
+            height:300px;
         }
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
-        .category {
-            text-align: center;
-            padding: 10px; /* Reduced padding */
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduced box-shadow */
-            cursor: pointer; /* Added cursor pointer */
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-            .category img {
-                width: 80px; /* Reduced image size */
-                height: 80px; /* Reduced image size */
-                object-fit: cover;
-                border-radius: 50%;
-                margin-bottom: 10px; /* Reduced margin */
-            }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
 
-        footer {
-            background-color: #232f3e;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .footer-links a {
-            color: #fff;
-            margin: 0 10px;
-            text-decoration: none;
-        }
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
 
-        /* Search bar styles */
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 8px 20px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+section.banner img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+section.products {
+    margin-top: 20px;
+}
+
+section.products h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Responsive Styles */
+@*@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }*@
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
         .search-bar {
-            text-align: center;
-            margin-bottom: 20px;
+            flex-direction: column;
+            margin-top: 70px;
         }
 
-            .search-bar input[type="text"] {
-                padding: 5px;
-            }
+    .search-bar input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 
-            .search-bar button {
-                padding: 5px 10px;
-                background-color: #ddd;
-                border: none;
-                cursor: pointer;
-            }
+    .search-bar button {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome To E-Trading</h1>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="~/images/LOGO_EKart1.jpg" alt="Ekart_Trading Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for product Category">
+                <button type="submit">Search</button>
+            </div>
+        </header>
 
-    </header>
+        <section class="banner">
+            <img src="~/images/Banner_Ecart1.jpg" alt="Banner Image">
+        </section>
 
+        <section class="products">
+        </section>
 
+        <section class="products">
+        </section>
 
-    <div class="banner">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.4VUGMZf7aG6Sd9zeWLPuiAHaGL&pid=Api&P=0&h=180" alt="Banner 1" width="1000" height="200">
-        <img src="https://www.techprevue.com/wp-content/uploads/2016/09/fashion-online-shopping-sites.jpg" alt="Banner 2" width="1000" height="200">
-        <img src="https://1.bp.blogspot.com/-nnc_wv2uFI8/XteHuVaJBMI/AAAAAAAAAZk/uYd8OyJrznkaNXbB-xI7rXS1B_dtcCmfQCLcBGAsYHQ/w1200-h630-p-k-no-nu/banner_54c9af89-36d2-41b7-8fd0-4065f1a916e2_1920x.jpg" alt="Banner 3" width="1000" height="200" style="display: none;">
     </div>
-
-    <section class="featured-categories">
-        <div class="category" onclick="location.href='electronics.cshtml';">
-            <img src="https://i1.wp.com/www.justwebworld.com/wp-content/uploads/2014/06/Electrical-Gadgets-Electronic-Products.jpg?fit=819%2C598&ssl=1" alt="Electronics">
-            <h3>Electronics</h3>
-        </div>
-        <div class="category" onclick="location.href='clothing.html';">
-            <img src="https://tse4.mm.bing.net/th?id=OIP.gNAPEphxf74Zul2dmZ0GxQHaE7&pid=Api&P=0&h=180" alt="Clothing">
-            <h3>Clothing</h3>
-        </div>
-        <div class="category" onclick="location.href='shoes.html';">
-            <img src="https://i.pinimg.com/originals/8b/7b/49/8b7b499eeffe0d6c7688e5318d48e3ba.jpg" alt="Shoes">
-            <h3>Shoes</h3>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-
-        </div>
-    </footer>
-
-    <script>
-        // Select the banner
-        const banner = document.querySelector('.banner');
-
-        // Select the images in the banner
-        const images = banner.querySelectorAll('img');
-
-        // Set initial image index
-        let currentIndex = 0;
-
-        // Function to toggle image visibility
-        function toggleImage() {
-            // Hide the current image
-            images[currentIndex].style.display = 'none';
-            // Move to the next image
-            currentIndex = (currentIndex + 1) % images.length;
-            // Show the next image
-            images[currentIndex].style.display = 'block';
-        }
-
-        // Call the toggleImage function every 3 seconds
-        setInterval(toggleImage, 3000);
-    </script>
 </body>
 </html>

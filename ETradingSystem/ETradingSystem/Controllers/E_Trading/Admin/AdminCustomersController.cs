@@ -37,7 +37,7 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
             return View(customer);
         }
 
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(decimal? id)
         {
             if (id == null)
             {
@@ -56,11 +56,21 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
         public ActionResult DeleteConfirmed(decimal id)
         {
             Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (customer != null)
+            {
+                if (customer.Status != "deleted") 
+                {
+                    customer.Status = "deleted"; 
+                    db.SaveChanges();
+                }
+                else
+                {
+                    customer.Status = "Active";
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

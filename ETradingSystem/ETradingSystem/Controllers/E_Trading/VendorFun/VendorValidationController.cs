@@ -8,6 +8,7 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
 {
     public class VendorValidationController : Controller
     {
+        public decimal Vendor_ID;
         private readonly E_TradingDBEntities db; 
         public VendorValidationController()
         {
@@ -24,7 +25,8 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
         {
             if (IsValidVendor(email, password))
             {
-                return RedirectToAction("Index", "Home");
+                Vendor_ID = db.Vendors.Where(p => p.Vendor_Email == email).Select(p => p.Vendor_Id).FirstOrDefault();
+                return RedirectToAction("Index/"+Vendor_ID, "Products");
             }
             else
             {
