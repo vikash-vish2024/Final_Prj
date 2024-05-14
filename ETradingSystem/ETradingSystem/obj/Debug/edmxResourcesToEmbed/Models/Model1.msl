@@ -126,5 +126,7 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="orderDetail" FunctionName="E_TradingDBModel.Store.orderDetail" />
     <FunctionImportMapping FunctionImportName="orderPlaced" FunctionName="E_TradingDBModel.Store.orderPlaced" />
+    <FunctionImportMapping FunctionImportName="updateStatus" FunctionName="E_TradingDBModel.Store.updateStatus" />
+    <FunctionImportMapping FunctionImportName="updateStock" FunctionName="E_TradingDBModel.Store.updateStock" />
   </EntityContainerMapping>
 </Mapping>

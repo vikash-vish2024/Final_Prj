@@ -314,5 +314,11 @@
       <Parameter Name="productId" Mode="In" Type="Int32" />
       <Parameter Name="customerId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="updateStatus">
+      <Parameter Name="productId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="updateStock">
+      <Parameter Name="productId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

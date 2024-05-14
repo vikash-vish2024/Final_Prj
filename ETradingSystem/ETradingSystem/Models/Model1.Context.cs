@@ -71,5 +71,23 @@ namespace ETradingSystem.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("orderPlaced", purchaseIdParameter, productIdParameter, customerIdParameter);
         }
+    
+        public virtual int updateStatus(Nullable<int> productId)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateStatus", productIdParameter);
+        }
+    
+        public virtual int updateStock(Nullable<int> productId)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateStock", productIdParameter);
+        }
     }
 }

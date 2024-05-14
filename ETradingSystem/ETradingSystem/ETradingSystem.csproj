@@ -169,6 +169,7 @@
     <Compile Include="Controllers\E_Trading\CustomerFun\CustomersController.cs" />
     <Compile Include="Controllers\E_Trading\CustomerFun\CustomerValidationController.cs" />
     <Compile Include="Controllers\E_Trading\CustomerFun\OrdersController.cs" />
+    <Compile Include="Controllers\E_Trading\VendorFun\Products1Controller.cs" />
     <Compile Include="Controllers\E_Trading\VendorFun\ProductsController.cs" />
     <Compile Include="Controllers\E_Trading\VendorFun\VendorsController.cs" />
     <Compile Include="Controllers\E_Trading\VendorFun\VendorValidationController.cs" />
@@ -326,6 +327,11 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Products1\Create.cshtml" />
+    <Content Include="Views\Products1\Delete.cshtml" />
+    <Content Include="Views\Products1\Details.cshtml" />
+    <Content Include="Views\Products1\Edit.cshtml" />
+    <Content Include="Views\Products1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -245,6 +245,12 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
     <Parameter Name="productId" Type="int" Mode="In" />
     <Parameter Name="customerId" Type="int" Mode="In" />
   </Function>
+  <Function Name="updateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updateStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productId" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="E_TradingDBModelStoreContainer">
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />

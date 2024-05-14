@@ -250,6 +250,12 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
           <Parameter Name="productId" Type="int" Mode="In" />
           <Parameter Name="customerId" Type="int" Mode="In" />
         </Function>
+        <Function Name="updateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updateStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="E_TradingDBModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -626,6 +632,12 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
             <Parameter Name="productId" Mode="In" Type="Int32" />
             <Parameter Name="customerId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="updateStatus">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updateStock">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -758,6 +770,8 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="orderDetail" FunctionName="E_TradingDBModel.Store.orderDetail" />
           <FunctionImportMapping FunctionImportName="orderPlaced" FunctionName="E_TradingDBModel.Store.orderPlaced" />
+          <FunctionImportMapping FunctionImportName="updateStatus" FunctionName="E_TradingDBModel.Store.updateStatus" />
+          <FunctionImportMapping FunctionImportName="updateStock" FunctionName="E_TradingDBModel.Store.updateStock" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

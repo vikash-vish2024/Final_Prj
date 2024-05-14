@@ -35,7 +35,9 @@ namespace ETradingSystem.Controllers.E_Trading.CustomerFun
                     db.orderPlaced(purchaseId, productId, customerId);
                     int orderId = r.Next(100, 999);
                     db.orderDetail(orderId, purchaseId, productId);
-                    return RedirectToAction("Index");
+                    db.updateStatus(productId);
+                    db.updateStatus(productId);
+                    return RedirectToAction("Index","Product");
                 }
                 else
                 {
