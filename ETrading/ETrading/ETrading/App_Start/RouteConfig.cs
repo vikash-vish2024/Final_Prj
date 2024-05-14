@@ -16,12 +16,7 @@ namespace ETrading
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Help",
-                url: "help",
-                defaults: new { controller = "Home", action = "Help" }
+                defaults: new { controller = "Customers", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

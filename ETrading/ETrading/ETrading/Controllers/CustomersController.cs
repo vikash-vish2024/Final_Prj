@@ -10,6 +10,7 @@ using ETrading.Models;
 
 namespace ETrading.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
         private E_Trading_SystemEntities db = new E_Trading_SystemEntities();

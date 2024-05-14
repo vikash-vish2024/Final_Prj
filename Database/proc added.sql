@@ -120,12 +120,11 @@ Create table Order_Cancellation
 Order_Id numeric(3) foreign key references Order_Details(Order_Id),
 Cancellation_Date DateTime not null,
 Refund_Amount numeric(8))
- 
- 
+  
 select * from Admin
-Select * from Customer
+
 select * from Vendors
-select * from Products
+
 select * from Order_Details
 select * from Order_Cancellation
 select * from Orders
@@ -133,22 +132,43 @@ select * from Wallet
 select * from BucketList
 select * from Hints
 select * from Orders
+select * from Order_Details
+Select * from Customer
+select * from Products
 
-CREATE PROCEDURE GetProductsByVendorId
-    @VendorId DECIMAL
-AS
-BEGIN
-    SELECT p.Product_Id,
-           p.Product_Name,
-           p.Brand,
-           p.Color,
-           p.Price,
-           p.Available_Stock,
-           p.Status,
-           p.ImageFileName,
-           p.isdeleted,
-           v.Vendor_Name
-    FROM Products p
-    INNER JOIN Vendors v ON p.Vendor_Id = v.Vendor_Id
-    WHERE p.Vendor_Id = @VendorId;
-END;
+create or alter proc orderPlaced(@purchaseId int,@productId int,@customerId int)
+as begin 
+	declare @orderamt float,@address varchar(50),@dvldate date,@productName varchar(30)
+	set @orderamt=99+(select Price from Products where Product_Id=@productId)
+	set @dvldate=(SELECT CONVERT(DATE, GETDATE()+7))
+	set @address=(select address from Customer where Customer_Id=@customerId)
+	insert into Orders values(@purchaseId,@customerId,@dvldate,@orderamt,'COD',@address,'Confirm')
+end
+exec orderPlaced 111,1,1
+create or alter proc orderDetail(@orderId int,@purchaseId int,@productId int)
+as begin
+	declare @productName varchar(30)=(select Product_Name from Products where Product_Id=@productId)
+	declare @productPrice int=(select Price from Products where Product_Id=@productId)
+	insert into Order_Details values(@orderId,@purchaseId,@productName,@productPrice)
+end
+exec orderDetail 111,111,1
+create or alter proc updateStockAvl(@productId int)
+insert into Orders values(1,1,'2024/06/01',1200,'COD','Banglore','Confirm');
+
+select GetDATE()+7;
+
+select * from Products
+create or alter proc updateStock(@productId int)
+as begin 
+	update Products set Available_Stock=Available_Stock-1 where Product_Id=@productId
+	end
+
+create or alter proc updateStatus(@productId int)
+as begin 
+	declare @avlstock int=(select Available_Stock from Products where Product_Id=@productId)
+	if(@avlstock=0)
+		update Products set Status='Out Of Stock' where Product_Id=@productId
+	end
+exec updateStock 121
+select * from Products
+execute updateStatus 121

@@ -28,8 +28,8 @@ namespace ETradingSystem.Models
         public Nullable<double> Price { get; set; }
         public Nullable<int> Available_Stock { get; set; }
         public string Status { get; set; }
-        public string ImageFileName { get; set; }
         public string isdeleted { get; set; }
+        public string ImageURL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BucketList> BucketLists { get; set; }

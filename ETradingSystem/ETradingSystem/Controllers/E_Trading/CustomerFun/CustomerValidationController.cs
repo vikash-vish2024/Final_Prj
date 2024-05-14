@@ -8,7 +8,7 @@ namespace ETradingSystem.Controllers.E_Trading.CustomerFun
 {
     public class CustomerValidationController : Controller
     {
-      
+        public static decimal cust_id;
         private readonly E_TradingDBEntities db; 
 
         public CustomerValidationController()
@@ -27,6 +27,7 @@ namespace ETradingSystem.Controllers.E_Trading.CustomerFun
 
             if (IsValidCustomer(email, password))
             {
+                cust_id = db.Customers.Where(c => c.Customer_Email == email).Select(c => c.Customer_Id).FirstOrDefault();
                 return RedirectToAction("Index", "Home");
             }
             else

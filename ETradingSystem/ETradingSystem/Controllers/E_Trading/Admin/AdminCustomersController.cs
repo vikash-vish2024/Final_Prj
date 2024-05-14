@@ -56,7 +56,6 @@ namespace ETradingSystem.Controllers.E_Trading.Admin
             }
             return View(customer);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(decimal id)

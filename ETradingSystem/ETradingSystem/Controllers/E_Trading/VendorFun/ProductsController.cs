@@ -13,7 +13,7 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
     public class ProductsController : Controller
     {
         private E_TradingDBEntities db = new E_TradingDBEntities();
-        
+        public static int productId;
         public ActionResult Index(decimal? id)
         {
             var products = db.Products.Where(v=>v.Vendor_Id==id);
@@ -22,6 +22,7 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
 
         public ActionResult Details(decimal id)
         {
+            productId = (int)id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

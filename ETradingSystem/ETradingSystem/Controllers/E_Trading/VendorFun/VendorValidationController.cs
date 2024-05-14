@@ -9,6 +9,7 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
     public class VendorValidationController : Controller
     {
         public decimal Vendor_ID;
+        Vendor v = new Vendor();
         private readonly E_TradingDBEntities db; 
         public VendorValidationController()
         {
@@ -23,10 +24,15 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            if (IsValidVendor(email, password))
+            if (IsValidVendor(email, password)&& v.Status=="Active")
             {
                 Vendor_ID = db.Vendors.Where(p => p.Vendor_Email == email).Select(p => p.Vendor_Id).FirstOrDefault();
                 return RedirectToAction("Index/"+Vendor_ID, "Products");
+            }
+            else if(IsValidVendor(email, password) && v.Status == "Inactive")
+            {
+                ViewBag.ErrorMessage = "Your Account is inactive. Please contact the admin.";
+                return View();
             }
             else
             {
@@ -37,12 +43,13 @@ namespace ETradingSystem.Controllers.E_Trading.VendorFun
 
         private bool IsValidVendor(string email, string password)
         {
-            string Email = db.Vendors.Where(x => x.Vendor_Email == email).Select(x => x.Vendor_Email).FirstOrDefault();
-            string Password = db.Vendors.Where(x => x.Vendor_Email == email).Select(x => x.Passowrd).FirstOrDefault();
-            if (email == Email && password == Password)
+
+            var vendor = db.Vendors.FirstOrDefault(x => x.Vendor_Email == email && x.Passowrd == password);
+            if (vendor != null && vendor.Status == "Active")
             {
                 return true;
             }
+            
             return false;
         }
     }

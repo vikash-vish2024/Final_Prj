@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="E_TradingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="E_TradingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Admin_Id" />
@@ -91,8 +91,8 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
           <Property Name="Price" Type="float" />
           <Property Name="Available_Stock" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="25" />
-          <Property Name="ImageFileName" Type="varchar" MaxLength="100" />
           <Property Name="isdeleted" Type="varchar" MaxLength="20" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="Vendors">
           <Key>
@@ -240,6 +240,16 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="orderDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orderId" Type="int" Mode="In" />
+          <Parameter Name="purchaseId" Type="int" Mode="In" />
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="orderPlaced" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="purchaseId" Type="int" Mode="In" />
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="customerId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="E_TradingDBModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -298,8 +308,7 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
             <End Role="Wallet" EntitySet="Wallet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="E_TradingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -392,8 +401,8 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
           <Property Name="Price" Type="Double" />
           <Property Name="Available_Stock" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="ImageFileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="isdeleted" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BucketLists" Relationship="Self.FK__BucketLis__Produ__5070F446" FromRole="Products" ToRole="BucketList" />
           <NavigationProperty Name="Vendor" Relationship="Self.FK__Products__Vendor__4E88ABD4" FromRole="Products" ToRole="Vendors" />
         </EntityType>
@@ -607,6 +616,16 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
             <End Role="Vendors" EntitySet="Vendors" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <FunctionImport Name="orderDetail">
+            <Parameter Name="orderId" Mode="In" Type="Int32" />
+            <Parameter Name="purchaseId" Mode="In" Type="Int32" />
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="orderPlaced">
+            <Parameter Name="purchaseId" Mode="In" Type="Int32" />
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="customerId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -695,8 +714,8 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Available_Stock" ColumnName="Available_Stock" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
                 <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -737,6 +756,8 @@ warning 6002: The table/view 'E_TradingDB.dbo.BucketList' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="orderDetail" FunctionName="E_TradingDBModel.Store.orderDetail" />
+          <FunctionImportMapping FunctionImportName="orderPlaced" FunctionName="E_TradingDBModel.Store.orderPlaced" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
